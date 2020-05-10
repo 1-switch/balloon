@@ -3,11 +3,14 @@
         <script>
             let n = 1;
             document.addEventListener('keypress', (event) => {
-                console.log(`Key "${event.key}" released  [event: keyup]`)
+                console.log(`Key "${event.key}" released  [event: keyup]`);
+                n++;
+                const num = document.querySelector('#num');
+                num.innerHTML = `${n}`;
             });
         </script>
     </head>
     <body>
-        
+        <div id="num"></div>
     </body>
 </html>
