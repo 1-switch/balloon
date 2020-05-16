@@ -38,9 +38,6 @@ const fsm = StateMachine({
   ],
   methods: {
     "onEnter開始": () => {
-      console.log('開始');
-      const b = document.querySelector('#風船');
-      b.style.opacity = 1;
     },
     ...中間イベント,
     "onEnterバン！": async () => {
@@ -66,4 +63,10 @@ const eventHandler = async () => {
   fsm.ユーザー入力();
 };
 
-ユーザー入力を受け付ける(eventHandler);
+ユーザー入力を受け付ける(() => {
+  const a = document.querySelector('#効果音：ビヨーン');
+  a.addEventListener('ended', () => {
+    ユーザー入力を受け付ける(eventHandler);
+  });
+  a.play();
+});

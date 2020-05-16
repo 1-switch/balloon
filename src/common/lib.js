@@ -1,13 +1,13 @@
 import confetti from 'canvas-confetti';
 confetti.Promise = Promise;
 
-export const ユーザー入力を受け付ける = (handler) => {
+export const ユーザー入力を受け付ける = (handler, options) => {
     document.body.addEventListener('click', () => {
         handler();
-    });
+    }, options);
     document.addEventListener('keypress', () => {
         handler();
-    });
+    }, options);
 };
 
 export const 再生 = (id) => {
