@@ -14,7 +14,7 @@ const 中間イベント = Array.from(Array(9).keys()).reduce((obj, key, index) 
     console.log('onEnterサイズ' + (index + 1).toString() + ',' + (100 + (index + 1) * 50).toString() + 'px, ' + (300 + (index + 1) * 10).toString() + 'px');
     const b = document.querySelector('#風船');
     await Promise.all([
-      再生('#効果音：ビヨーン'),
+      再生(['byoon.ogg', 'byoon.m4a']),
       サイズ変更(b, {
         width: (100 + (index + 1) * 50).toString() + 'px',
         height: (300 + (index + 1) * 10).toString() + 'px'}),
@@ -44,12 +44,12 @@ const fsm = StateMachine({
       const c = document.querySelector('#紙吹雪用キャンバス');
       const b = document.querySelector('#風船');
       await Promise.all([
-        再生('#効果音：ビヨーン'),
+        再生(['byoon.ogg', 'byoon.m4a']),
         サイズ変更(b, {width: '600px', height: '400px'}),
       ]);
       await Promise.all([
         消す(b),
-        再生('#効果音：バン！'),
+        再生(['ban.ogg', 'ban.m4a']),
         紙吹雪(c, '#ff0000'),
         サイズ変更(b, {width: '100px', height: '300px'}),
       ]);
@@ -62,11 +62,4 @@ const fsm = StateMachine({
 const eventHandler = async () => {
   fsm.ユーザー入力();
 };
-
-ユーザー入力を受け付ける(() => {
-  const a = document.querySelector('#効果音：ビヨーン');
-  a.addEventListener('ended', () => {
-    ユーザー入力を受け付ける(eventHandler);
-  });
-  a.play();
-});
+ユーザー入力を受け付ける(eventHandler);

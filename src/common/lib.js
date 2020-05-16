@@ -1,5 +1,6 @@
 import confetti from 'canvas-confetti';
 confetti.Promise = Promise;
+const {Howl, Howler} = require('howler');
 
 export const ユーザー入力を受け付ける = (handler, options) => {
     document.body.addEventListener('click', () => {
@@ -10,13 +11,17 @@ export const ユーザー入力を受け付ける = (handler, options) => {
     }, options);
 };
 
-export const 再生 = (id) => {
-    const e = document.querySelector(id);
+export const 再生 = (sounds) => {
     return new Promise((resolve) => {
-        e.addEventListener('ended', () => {
-            resolve();
+        const sound = new Howl({
+            src: sounds
         });
-        e.play();
+        console.log(sound);
+        sound.on('end', () => {
+            console.log('end');
+            resolve();
+        })
+        sound.play();
     });
 };
 
