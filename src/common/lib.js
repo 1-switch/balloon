@@ -2,10 +2,13 @@ import confetti from 'canvas-confetti';
 confetti.Promise = Promise;
 
 export const ユーザー入力を受け付ける = (handler) => {
-    const body = document.body.addEventListener('click', () => {
+    document.body.addEventListener('click', () => {
         handler();
     });
-}
+    document.addEventListener('keypress', () => {
+        handler();
+    });
+};
 
 export const 再生 = (id) => {
     const e = document.querySelector(id);
