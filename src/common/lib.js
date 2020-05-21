@@ -3,22 +3,25 @@ confetti.Promise = Promise;
 const {Howl, Howler} = require('howler');
 
 export const ユーザー入力を受け付ける = (handler, options) => {
-    document.body.addEventListener('click', () => {
+    document.body.addEventListener('mousedown', () => {
         handler();
     }, options);
-    document.addEventListener('keypress', () => {
+    document.body.addEventListener('touchstart', () => {
         handler();
+    }, options);
+    document.addEventListener('keydown', (e) => {
+        handler();
+        e.preventDefault();
     }, options);
 };
 
-export const 再生 = (sounds) => {
+export const 再生 = (sounds, options = null) => {
     return new Promise((resolve) => {
         const sound = new Howl({
-            src: sounds
+            src: sounds,
+            ...options,
         });
-        console.log(sound);
         sound.on('end', () => {
-            console.log('end');
             resolve();
         })
         sound.play();

@@ -28,6 +28,7 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
-    "@types/canvas-confetti": "^1.0.0"
+    "@types/canvas-confetti": "^1.0.0",
+    "webpack-dev-server": "^3.11.0"
   }
 }

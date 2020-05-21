@@ -14,7 +14,7 @@ const 中間イベント = Array.from(Array(9).keys()).reduce((obj, key, index) 
     console.log('onEnterサイズ' + (index + 1).toString() + ',' + (100 + (index + 1) * 50).toString() + 'px, ' + (300 + (index + 1) * 10).toString() + 'px');
     const b = document.querySelector('#風船');
     await Promise.all([
-      再生(['byoon.ogg', 'byoon.m4a']),
+      再生(['byoon.ogg', 'byoon.m4a'], {volume: (index + 1) * 0.07}),
       サイズ変更(b, {
         width: (100 + (index + 1) * 50).toString() + 'px',
         height: (300 + (index + 1) * 10).toString() + 'px'}),
@@ -44,7 +44,7 @@ const fsm = StateMachine({
       const c = document.querySelector('#紙吹雪用キャンバス');
       const b = document.querySelector('#風船');
       await Promise.all([
-        再生(['byoon.ogg', 'byoon.m4a']),
+        再生(['byoon.ogg', 'byoon.m4a'], {volume: 0.7}),
         サイズ変更(b, {width: '600px', height: '400px'}),
       ]);
       await Promise.all([
